@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "947046084557",
+    "project_id": "ungsuppermall",
+    "storage_bucket": "ungsuppermall.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:947046084557:android:ea8d90004be4b89c91de84",
+        "android_client_info": {
+          "package_name": "com.flutterthailand.ungsuppermall"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "947046084557-refsqcijc1gi50gae7o76bffq3t1dmel.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBttd8Q0a_m8Nl12XVHU7QrVXGwmX3yze4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "947046084557-refsqcijc1gi50gae7o76bffq3t1dmel.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

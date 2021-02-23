@@ -13,16 +13,59 @@ class _AuthenState extends State<Authen> {
   Widget build(BuildContext context) {
     screen = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+      body: SafeArea(
+        child: Stack(
           children: [
-            buildLogo(),
-            MyStyle().titleH1('Ung Supper Mall'),
-            buildUser(),
-            buildPassword(),
+            MyStyle().buildBackground(context),
+            buildCreateAccount(),
+            buildContent(),
           ],
         ),
+      ),
+    );
+  }
+
+  Column buildCreateAccount() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            MyStyle().titleH3Dark('Non Account ?'),
+            TextButton(
+              onPressed: () => Navigator.pushNamed(context, '/createAccount'),
+              child: MyStyle().titleH3Button('Create Button'),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Center buildContent() {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          buildLogo(),
+          MyStyle().titleH1('Ung Supper Mall'),
+          buildUser(),
+          buildPassword(),
+          buildLogin(),
+        ],
+      ),
+    );
+  }
+
+  Container buildLogin() {
+    return Container(
+      margin: EdgeInsets.only(top: 8),
+      width: screen * 0.6,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(primary: MyStyle().primaryColor),
+        onPressed: () {},
+        child: Text('Login'),
       ),
     );
   }
