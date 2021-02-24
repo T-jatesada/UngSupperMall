@@ -1,6 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:ungsuppermall/models/typeuser_model.dart';
+import 'package:ungsuppermall/utility/api.dart';
 import 'package:ungsuppermall/utility/dialog.dart';
 import 'package:ungsuppermall/utility/my_style.dart';
 
@@ -171,11 +174,23 @@ class _CreateAccountState extends State<CreateAccount> {
         print('uid ==>> $uid');
 
         // update Display Name
-        await value.user.updateProfile(displayName: name);
+        await value.user
+            .updateProfile(displayName: name)
+            .then((value) => print('display name Success'));
 
         // Insert Value To CloudFirestore
-
-
+        TypeUserModel model = TypeUserModel(name: name, typeuser: typeUser);
+        Map<String, dynamic> data = model.toMap();
+        print('map ==>> ${data.toString()}');
+        await FirebaseFirestore.instance
+            .collection('typeuser')
+            .doc(uid)
+            .set(data)
+            .then((value) {
+          String result = Api().findKeyByTypeUser(typeUser);
+          print('result ==>> $result');
+          Navigator.pushNamedAndRemoveUntil(context, result, (route) => false);
+        });
       }).catchError((onError) =>
               normalDialog(context, onError.code, onError.message));
     });
