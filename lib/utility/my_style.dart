@@ -1,9 +1,39 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 class MyStyle {
   Color darkColor = Color(0xff9d0000);
   Color primaryColor = Color(0xffd63e0f);
   Color lightColor = Color(0xffff713e);
+
+  Column buildSignOut(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        ListTile(
+          onTap: () async {
+            await Firebase.initializeApp().then((value) async {
+              await FirebaseAuth.instance.signOut().then(
+                    (value) => Navigator.pushNamedAndRemoveUntil(
+                        context, '/authen', (route) => false),
+                  );
+            });
+          },
+          tileColor: Colors.red.shade700,
+          leading: Icon(
+            Icons.exit_to_app,
+            size: 36,
+            color: Colors.white,
+          ),
+          title: Text(
+            'Sign Out',
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
+      ],
+    );
+  }
 
   Container buildBackground(BuildContext context) {
     return Container(
@@ -45,6 +75,8 @@ class MyStyle {
   }
 
   Widget showLogo() => Image(image: AssetImage('images/logo.png'));
+
+  Widget showImage() => Image(image: AssetImage('images/image.png'));
 
   Widget titleH1(String string) => Text(
         string,

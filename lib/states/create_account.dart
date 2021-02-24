@@ -181,14 +181,14 @@ class _CreateAccountState extends State<CreateAccount> {
         // Insert Value To CloudFirestore
         TypeUserModel model = TypeUserModel(name: name, typeuser: typeUser);
         Map<String, dynamic> data = model.toMap();
-        print('map ==>> ${data.toString()}');
+       
         await FirebaseFirestore.instance
             .collection('typeuser')
             .doc(uid)
             .set(data)
             .then((value) {
           String result = Api().findKeyByTypeUser(typeUser);
-          print('result ==>> $result');
+         
           Navigator.pushNamedAndRemoveUntil(context, result, (route) => false);
         });
       }).catchError((onError) =>
