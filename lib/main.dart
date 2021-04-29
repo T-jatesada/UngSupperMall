@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ungsuppermall/models/typeuser_model.dart';
 import 'package:ungsuppermall/states/add_information.dart';
+import 'package:ungsuppermall/states/add_product.dart';
 import 'package:ungsuppermall/states/authen.dart';
 import 'package:ungsuppermall/states/create_account.dart';
 import 'package:ungsuppermall/states/my_service_buyer.dart';
@@ -17,6 +18,7 @@ final Map<String, WidgetBuilder> map = {
   '/myServiceBuyer': (BuildContext context) => MyServiceBuyer(),
   '/myServiceShopper': (BuildContext context) => MyServiceShopper(),
   '/addInformation':(BuildContext context)=>AddInformation(),
+  '/addProduct':(BuildContext context)=>AddProduct(),
 };
 
 String iniRount = '/authen';
